@@ -1,7 +1,11 @@
 # Reflection
-# 1.
-# 2.
-# 3.
+# 1. The fill decision is the most ambiguous because making up numbers can throw
+#    off totals. On real data, I would first check whether the missing values are
+#    random or follow a pattern, because patterned blanks need a different fix.
+# 2. Yes, they would.
+# 3. When I first loaded the data, I expected normal, small sales. But describe() 
+#    showed extreme highs (9,999 quantity, $59,994.00 revenue) and negative revenue 
+#    (-$3,268.00), which proved I have to check min and max values before trusting summary stats.
 
 print(f"-----Exercise 1-----")
 import pandas as pd
