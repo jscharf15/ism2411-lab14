@@ -73,3 +73,12 @@ print(df.describe())
 df = df[df["quantity_sold"] != 9999]
 
 print("Shape after:", df.shape)
+
+print(f" -----Exercise 7-----")
+df.to_csv("data/clean_sales.csv", index=False)
+
+check = pd.read_csv("data/clean_sales.csv")
+check.info()
+
+clean = pd.read_csv("data/clean_sales.csv", parse_dates=["order_date"])
+clean.info()
