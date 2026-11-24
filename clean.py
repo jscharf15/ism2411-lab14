@@ -3,7 +3,7 @@
 # 2.
 # 3.
 
-# -----Exercise 1-----
+print(f"-----Exercise 1-----")
 import pandas as pd
 
 df = pd.read_csv("data/messy_sales.csv")
@@ -15,4 +15,6 @@ print(df.isnull().sum())
 #    Prices should be numeric (float or int) so you can calculate totals or averages.
 # 3. Order Date is stored as text (str) instead of a date.
 
-# -----Exercise 2-----
+print(f" -----Exercise 2-----")
+df.columns = df.columns.str.lower().str.replace(" ", "_")
+print(df.columns.tolist())
