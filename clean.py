@@ -58,3 +58,18 @@ print("Duplicate rows:", df.duplicated().sum())
 df = df.drop_duplicates()
 
 print("Shape after:", df.shape)
+
+print(f" -----Exercise 6-----")
+print(df.describe())
+
+# Suspicious Statistic 1: minimum revenue is -3268.00. These are likely returns, which are
+# real money that went back to customers, so I keep them.
+
+# Suspicious Statistic 2: maximum revenue is 59994.00, far above the 75th percentile. 
+# It comes from quantity_sold = 9999 at $6.00, a placeholder and not a real order.
+
+# Drop quantity_sold of 9999: it's a placeholder someone typed, not a real order. 
+# Keeping it would inflate revenue and skew averages and totals.
+df = df[df["quantity_sold"] != 9999]
+
+print("Shape after:", df.shape)
