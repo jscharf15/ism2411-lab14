@@ -34,3 +34,20 @@ df["quantity_sold"] = df["quantity_sold"].fillna(df["quantity_sold"].mean())
 
 print("Shape after:", df.shape)
 print(df.isnull().sum())
+
+print(f" -----Exercise 4-----")
+df["order_date"] = pd.to_datetime(df["order_date"], errors="coerce")
+print("Dates that became NaT:", df["order_date"].isna().sum())
+
+df["unit_price"] = (
+    df["unit_price"]
+    .str.replace("$", "", regex=False)
+    .str.replace(",", "", regex=False)
+    .astype(float)
+)
+
+df["quantity_sold"] = df["quantity_sold"].astype(int)
+
+df["revenue"] = (df["unit_price"] * df["quantity_sold"]).round(2)
+
+print(df.dtypes)
