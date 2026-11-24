@@ -18,3 +18,19 @@ print(df.isnull().sum())
 print(f" -----Exercise 2-----")
 df.columns = df.columns.str.lower().str.replace(" ", "_")
 print(df.columns.tolist())
+
+print(f" -----Exercise 3-----")
+print("Shape before:", df.shape)
+
+# Drop rows missing order_id or order_date.
+# order_id uniquely identifies each transaction, 
+# and order_date is needed to analyze sales over time.
+df = df.dropna(subset=["order_id", "order_date"])
+
+# Fill missing quantity_sold with the column mean.
+# This keeps those rows available for other analyses while keeping 
+# the overall average quantity unchanged.
+df["quantity_sold"] = df["quantity_sold"].fillna(df["quantity_sold"].mean())
+
+print("Shape after:", df.shape)
+print(df.isnull().sum())
